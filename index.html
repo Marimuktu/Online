@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faculty Profile</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* ---------- BASIC ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 25px;
+
+    background: rgba(254,255,255,0.85);
+    backdrop-filter: blur(15px);
+
+    border-radius: 50px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #12355b;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.menu a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+
+/* ---------- ANIMATED UNDERLINE ---------- */
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    left: 50%;
+    bottom: 2px;
+
+    background: cyan;
+    border-radius: 10px;
+
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.menu a:hover {
+    color: #EA3483;
+}
+
+.menu a:hover::after {
+    width: 70%;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 8% 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00FFFF,
+            #1976d2,
+            #FF5C77
+        );
+}
+
+.profile-card {
+    max-width: 1000px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    padding: 50px;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    border-radius: 25px;
+
+    color: white;
+
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+
+    animation: cardIn 1.2s ease;
+}
+
+@keyframes cardIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ---------- PHOTO ---------- */
+
+.photo {
+    width: 220px;
+    height: 220px;
+
+    border-radius: 10%;
+
+    border: 2px solid rgba(55,255,255,0.8);
+
+    object-fit: cover;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
+    animation: photoFadeIn 4s ease-in-out;
+}
+
+@keyframes photoFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ---------- PROFILE TEXT ---------- */
+
+.profile-text h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.profile-text h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.profile-text p {
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+
+/* ---------- TAGS ---------- */
+
+.tags {
+    margin-top: 20px;
+}
+
+.tag {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    margin: 5px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.2);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    transition: 0.3s;
+}
+
+.tag:hover {
+    background: cyan;
+    color: #1976d2;
+    transform: translateY(-4px);
+}
+
+
+/* ---------- DOWNLOAD PROFILE ---------- */
+
+.download-profile {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    animation: blinkProfile 1s infinite;
+}
+
+
+/* BLINKING ANIMATION */
+
+.cv-link {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+
+    animation: cvBlink 0.8s infinite;
+}
+
+@keyframes cvBlink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* HOVER EFFECT */
+
+.download-profile:hover {
+    color: red;
+
+    animation-play-state: paused;
+
+    text-decoration: underline;
+}
+
+
+/* ---------- SECTIONS ---------- */
+
+section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #12355b;
+}
+
+.section-title span {
+    display: block;
+
+    width: 60px;
+    height: 4px;
+
+    margin: 12px auto;
+
+    background: #1976d2;
+
+    border-radius: 5px;
+}
+
+
+/* ---------- CARDS ---------- */
+
+.cards {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    background: cyan;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+
+    transition: 0.4s;
+
+    border-top: 4px solid #1976d2;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    color: #12355b;
+    margin-bottom: 12px;
+}
+
+.card p {
+    line-height: 1.7;
+    color: #666;
+}
+
+
+/* ---------- TIMELINE ---------- */
+
+.timeline {
+    max-width: 900px;
+    margin: auto;
+}
+
+.timeline-item {
+    position: relative;
+
+    padding: 20px 30px;
+
+    margin-bottom: 20px;
+
+    background: cyan;
+
+    border-left: 5px solid #1976d2;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+
+    transition: 0.3s;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+}
+
+.timeline-item h3 {
+    color: #12355b;
+    margin-bottom: 8px;
+}
+
+
+/* ---------- CONTACT ---------- */
+
+.contact {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.contact-box {
+    background: pink;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+}
+
+.contact-box:hover {
+    transform: scale(1.04);
+}
+
+.contact-box h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    background: #440E03;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+
+/* ---------- MOBILE MENU ---------- */
+
+.menu-btn {
+    display: none;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        width: 94%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .menu {
+        position: absolute;
+
+        top: 65px;
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        background: white;
+
+        border-radius: 20px;
+
+        padding: 15px;
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu a {
+        text-align: center;
+
+        padding: 13px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 35px 20px;
+    }
+
+    .profile-text h1 {
+        font-size: 32px;
+    }
+
+    .profile-text h3 {
+        font-size: 18px;
+    }
+
+    .photo {
+        width: 170px;
+        height: 170px;
+    }
+
+    .download-profile {
+        font-size: 16px;
+    }
+
+}
+
+/* ---------- SOCIAL MEDIA ---------- */
+
+.social-box {
+    grid-column: 1 / -1;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 21px;
+
+    transition: all 0.35s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-6px) scale(1.08);
+
+    background: #0077cc;
+    color: white;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar">
+
+  <div class="logo">
+    <font size="4">Faculty Profile :</font>
+
+    <a class="cv-link"
+       href="https://flipbookpdf.net/web/site/360269da952a1b00f3c04db98f1d1eef60773b79202609.pdf.html"
+       target="_blank">
+        <i class="fa-solid fa-file-pdf"></i>
+        View PM CV1
+    </a>
+</div>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul class="menu" id="menu">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#education">Education</a></li>
+
+        <li><a href="#teaching">Teaching</a></li>
+
+        <li><a href="#research">Research</a></li>
+
+        <li><a href="#publications">Publications</a></li>
+
+        <li><a href="#achievements">Achievements</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+    <div class="profile-card">
+        <img
+            src="pm1.png"
+            class="photo"
+            alt="Faculty Photo"
+        >
+        <div class="profile-text">
+
+            <h3><b><font color=pink>Mr. P. MARIMUKTU</font></b></h3>
+            <h5>M.Sc.,M.Tech.,GATE.,NET.,CCEE.,CCIT.,DBHPS.,(Ph.D)<h5><br>
+            <h6>
+              <font color=#24F99D>  <b>Past Experience (11 Years):</font></b><br>
+				Former Head & Assistant Professor,<br>
+                Department of Computer Science, Dr. Dadasaheb DR. Suresh G. Patil College, Chopda-Maharashtra.<br>
+				
+				<font color=#24F99D><br><b>Current Experience (from 2018 to present):</font></b> <br>Assistant Professor, <br>
+				Department of Computer Applications, Ayya Nadar Janaki Ammal College, SIVAKASI, TamilNadu
+            </h6>
+            <div class="tags">
+
+                <span class="tag">
+                    Data Science
+                </span>
+				<span class="tag">	
+                    Artificial Intelligence
+                </span>
+                <span class="tag">
+                    Natural Language Processing
+                </span>
+                <span class="tag">
+                    DSA
+                </span>
+				<span class="tag">
+                    Adavanced JAVA 
+                </span>
+				<span class="tag">
+                    Network Programming
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section id="education">
+
+    <div class="section-title">
+
+        <h2>Educational Qualifications</h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>(Ph.D)</h3>
+
+            <p>
+                Computer Applications
+                <br>
+                Kalasalingam Academy of Research and Education (KARE), Krishnankoil, Tamil Nadu 
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>M.Sc</h3>
+
+            <p>
+                Computer Science
+                <br>
+                K.B.C. North Maharashtra University, Jalgaon.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>M.Tech.</h3>
+
+            <p>
+                Computer Science & Engineering
+                <br>
+                KSOU, Mysore.
+            </p>
+
+        </div>
+		<div class="card">
+
+            <h3>GATE-2012</h3>
+
+            <p>
+                Computer Science & Information Technology
+                <br>
+                IIT, Delhi
+            </p>
+
+        </div>
+		<div class="card">
+
+            <h3>UGC NET-2019</h3>
+
+            <p>
+                Computer Science & Applications
+                <br>
+                NTA, UGC New Delhi
+            </p>
+
+        </div>
+		
+		<div class="card">
+
+            <h3>CCIT</h3>
+
+            <p>
+                Certificate Course in Information Technology
+                <br>
+                Maharashtra State Board of Skill, Vocational Education and Training, Mumbai
+            </p>
+
+        </div>
+		<div class="card">
+
+            <h3>CCEE</h3>
+
+            <p>
+                Certificate Course in Electronic Engineering
+                <br>
+                Kohinoor Technical Institute, Mumbai
+            </p>
+
+        </div>
+		<div class="card">
+
+            <h3>DBHPS</h3>
+
+            <p>
+                Hindi Pandit, Praveen Uttaradh
+                <br>
+                Dakshina Bharat Hindi Prachar Sabha, Madras
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEACHING ================= -->
+
+<section id="teaching">
+
+    <div class="section-title">
+
+        <h2>Teaching Areas</h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>Data Science</h3>
+
+            <p>
+                Machine Learning, Deep Learning, Natural Language Processing (NLP), Federated Learning, Responsible & Explainable AI.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Network Programming</h3>
+
+            <p>
+                Client Server Programming, Design & Implementation of Client-Server services.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Computer Programming</h3>
+
+            <p>
+                C, C++, Advanced Java,.NET, Python and Object-Oriented Programming.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESEARCH ================= -->
+
+<section id="research">
+
+    <div class="section-title">
+
+        <h2>Research Interests</h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>Artificial Intelligence</h3>
+
+            <p>
+                Machine Learning, Federated Learning
+                and XAI.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Data Analytics</h3>
+
+            <p>
+                Data analysis, visualization and
+                predictive modelling.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Python Programming</h3>
+
+            <p>
+                Smart systems and AI applications.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PUBLICATIONS ================= -->
+
+<section id="publications">
+
+    <div class="section-title">
+
+        <h2>Research Publications</h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Number of Patents & Copyrights Published: 14  <a class="cv-link" href="https://flipbookpdf.net/web/site/e0c4ba4bb6ec1f27eae29b3b534f71d71da3bdf6202609.pdf.html"
+       target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-file-pdf"></i>View Patents & Copyrights</a></h3>
+        </div>
+		
+		
+		<div class="timeline-item">
+            <h3>Book Publications: 3  <a class="cv-link" href="https://flipbookpdf.net/web/site/65884064c64507acf015e63a2dba2763997ac21f202609.pdf.html"
+       target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-file-pdf"></i>View Books Published</a></h3>
+        </div>
+		
+		<div class="timeline-item">
+
+            <h3>2026: Conference Paper Published</h3>
+
+            <p>
+                International Conference,<font color=blue>Springer Nature (SCOPUS Indexed)</font>- A Collaborative and Interpretable AI Model for Chronic Kidney Disease Prediction Using Federated Learning
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <h3>2025: Conference Paper Published</h3>
+
+            <p>
+                International Conference,<font color=blue>IEEE Xplore (SCOPUS Indexed)</font>- Federated Learning-Based Human-Robot Collaboration with Explainable AI: A Framework for Secure and Transparent Interaction 
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <h3>2024: Conference Paper Published</h3>
+
+            <p>
+                International Conference,<font color=blue>Springer Nature (SCOPUS Indexed)</font>– Review on Gene Expression Meta-analysis: Techniques and Implementations
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section id="achievements">
+
+    <div class="section-title">
+
+        <h2>Achievements & Contributions</h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>AWARDS Recived</h3>
+
+            <p>
+                <a class="cv-link" href="https://flipbookpdf.net/web/site/d4efe3e5e315a264828e5d65e84cd5c1ec66bf88202609.pdf.html"
+       target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-file-pdf"></i>View Awards</a></h3>
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Student Guidance</h3>
+
+            <p>
+                Guided UG and PG students in
+                academic and research projects.
+            </p>
+
+        </div>
+        <div class="card">
+
+            <h3>Research</h3>
+
+            <p>
+                Published research papers and
+                participated in conferences.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="section-title">
+
+        <h2>Contact</h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="contact">
+
+        <div class="contact-box">
+
+            <h3>Email</h3>
+
+            <p>
+                pmanjac@gmail.com
+            </p>
+
+        </div>
+
+        <div class="contact-box">
+
+            <h3>Department</h3>
+
+            <p>
+                Department of Computer Applications
+            </p>
+
+        </div>
+
+        <div class="contact-box">
+
+            <h3>College</h3>
+
+            <p>
+                Ayya Nadar Janaki Ammal College (Autonomous), SIVAKASI, TamilNadu.
+            </p>
+
+        </div>
+
+        <div class="contact-box">
+
+            <h3>Phone</h3>
+
+            <p>
+                +91 99758 03407
+            </p>
+
+        </div>
+
+    </div>
+<br>
+<!-- Social Media Contact -->
+
+<div class="contact-box social-box">
+
+    <div class="contact-icon">
+        <i class="fa-solid fa-globe"></i>
+    </div>
+
+    <h3>Social Media</h3>
+
+    <div class="social-links">
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/p-marimuktu-42505a236/"
+           target="_blank"
+           aria-label="LinkedIn"
+           title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/pm260309"
+           target="_blank"
+           aria-label="Facebook"
+           title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/p.marimuktu/"
+           target="_blank"
+           aria-label="Instagram"
+           title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 <font color=cyan><b>Mr. P. MARIMUKTU </b> </font>|
+        Department of Computer Applications
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function toggleMenu() {
+
+    document.getElementById("menu")
+            .classList.toggle("show");
+
+}
+
+</script>
+
+
+</body>
+</html>
+

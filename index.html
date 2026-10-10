@@ -254,7 +254,16 @@ body {
     animation: blinkProfile 1s infinite;
 }
 
+.blink {
+  animation: blink-effect 1s step-start infinite;
+}
 
+@keyframes blink-effect {
+  50% {
+    visibility: hidden;
+  }
+}
+	
 /* BLINKING ANIMATION */
 
 .cv-link {
@@ -619,7 +628,7 @@ footer {
 
         <li><a href="#achievements">Achievements</a></li>
 
-        <li><a href="#studcorner">Students Corner</a></li>
+        <li><a href="#studcorner" class="blink">Students Corner</a></li>
 
         <li><a href="#contact">Contact</a></li>
 

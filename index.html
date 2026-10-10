@@ -51,6 +51,30 @@ body {
     z-index: 1000;
 }
 
+/* ---------- MARQUEE BELOW NAVBAR ---------- */
+
+.announcement-bar {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    background: #12355b;
+    color: #ffffff;
+    padding: 10px 0;
+    font-size: 16px;
+    z-index: 999;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.announcement-bar marquee {
+    width: 100%;
+}
+
+.announcement-bar:hover {
+    color: #00ffff;
+}
+
+	
 .logo {
     font-size: 20px;
     font-weight: bold;
@@ -108,7 +132,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 100px 8% 50px;
+    padding: 150px 8% 50px;
 
     background:
         linear-gradient(
@@ -635,7 +659,14 @@ footer {
     </ul>
 
 </nav>
-
+	
+<!-- Scrolling Announcement Below Navbar -->
+<div class="announcement-bar">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+        <b>📢 Students Corner:</b> Updated Soon... &nbsp;&nbsp;&nbsp;
+        Welcome to the Faculty Profile of Mr. P. MARIMUKTU!
+    </marquee>
+</div>
 
 <!-- ================= HERO ================= -->
 
